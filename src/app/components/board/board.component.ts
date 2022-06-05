@@ -119,7 +119,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   newGame(): void{
-    this.turnNumber = 0;
+    this.turnNumber = 1;
     this.board.cleanBoard();
     this.isPlaying = this.started === 'x'? 'o':'x';
     this.started = this.isPlaying;
