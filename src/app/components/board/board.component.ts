@@ -25,7 +25,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   constructor(
     private readonly board: BoardDataHelperService,
     private readonly playersState: PlayerDataHelperService,
-    private readonly router: Router
+    readonly router: Router
   ) { 
   }
 
@@ -39,6 +39,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.board.cleanBoard();
     this.boardSubs.unsubscribe();
+    this.playersState.cleanData();
     this.playerSubs.unsubscribe();
   }
 

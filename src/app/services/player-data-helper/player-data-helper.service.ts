@@ -6,7 +6,7 @@ import { Player } from '../../interfaces/player';
   providedIn: 'root'
 })
 export class PlayerDataHelperService {
-  players = new BehaviorSubject<Array<Player>>([])
+  private players = new BehaviorSubject<Array<Player>>([])
   players$ = this.players.asObservable()
   constructor() { }
 
@@ -42,6 +42,14 @@ export class PlayerDataHelperService {
             score: this.players.value[1].score+1},
         ])
     }
+  }
+
+  cleanData():void{
+    this.players.next([])
+  }
+
+  returnValue(): Array<Player>{
+    return this.players.value
   }
   }
 

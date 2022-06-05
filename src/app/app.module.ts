@@ -16,13 +16,15 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

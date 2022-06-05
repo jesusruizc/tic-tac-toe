@@ -20,6 +20,11 @@
     font-size: 6vh;
 }
 
+.box:hover{
+    background-color: rgb(242, 241, 250);
+    transition: 0.3s;
+}
+
 #board{
     width: 50vh;
     height: 50vh;
