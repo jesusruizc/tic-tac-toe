@@ -21,6 +21,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 
 registerLocaleData(en);
@@ -46,7 +47,8 @@ registerLocaleData(en);
     NzFormModule,
     NzIconModule,
     NzInputModule,
-    NzRadioModule
+    NzRadioModule,
+    NzCardModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

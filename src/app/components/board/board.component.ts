@@ -49,7 +49,7 @@ export class BoardComponent implements OnInit, OnDestroy {
     if(this.isGameOver){
       this.handleGameOver(this.isPlaying);
       return
-    } else if(this.turnNumber===9){
+    } else if(this.turnNumber === 9){
       this.isGameOver = true;
       this.gameOverMessage = "<h1>Nobody wins!</h1>";
       return
@@ -66,7 +66,6 @@ export class BoardComponent implements OnInit, OnDestroy {
       for(let i=0;i<=2; i++){
         diagonal.push(this.boardState[2-i][i]);
       }
-      console.log(diagonal);
       if(diagonal.filter(element=>element.value === this.isPlaying).length ===3){
         return true
       }
@@ -79,7 +78,6 @@ export class BoardComponent implements OnInit, OnDestroy {
       for(let i=0;i<=2; i++){
         diagonal.push(this.boardState[i][i]);
       }
-      console.log(diagonal);
       if(diagonal.filter(element=>element.value === this.isPlaying).length === 3){
         return true
       }
@@ -99,7 +97,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     for(let i=0; i<=2; i++){
       column.push(this.boardState[i][position[1]]);
     }
-    console.log(column)
     if(
       (row.filter(element => element.value === this.isPlaying).length === 3) ||
     (column.filter(element => element.value === this.isPlaying).length === 3)){
@@ -121,6 +118,7 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   newGame(): void{
     this.turnNumber = 1;
+    this.gameOverMessage = '';
     this.board.cleanBoard();
     this.isPlaying = this.started === 'x'? 'o':'x';
     this.started = this.isPlaying;

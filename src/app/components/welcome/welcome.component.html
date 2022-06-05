@@ -12,7 +12,11 @@
                     <legend>Player One (Starts First)</legend>
                     <nz-form-item>
                         <nz-form-label nzFor="nameOne">Name</nz-form-label>
-                        <nz-form-control>
+                        <nz-form-control 
+                        [nzValidateStatus]="playersForm.get('playerOne')?.get('name')?.valid ? 'success': 
+                        playersForm.get('playerOne')?.get('name')?.touched? 'error': ''" 
+                        nzHasFeedback
+                        nzErrorTip="El nombre es obligatorio">
                             <nz-input-group nzPrefixIcon="user">
                                 <input nz-input id="nameOne" formControlName="name" type="text" placeholder="Player one name">
                             </nz-input-group>
@@ -30,7 +34,12 @@
                     <legend>Player Two</legend>
                     <nz-form-item>
                       <nz-form-label nzFor="nameTwo">Name:</nz-form-label>
-                      <nz-form-control>
+                      <nz-form-control 
+                      [nzValidateStatus]="playersForm.get('playerTwo')?.get('name')?.valid ? 'success':
+                       playersForm.get('playerTwo')?.get('name')?.touched? 'error': ''" 
+                       nzHasFeedback
+                       nzErrorTip="El nombre es obligatorio"
+                       > 
                           <nz-input-group nzPrefixIcon="user">
                             <input type="text" nz-input placeholder="Player two name" formControlName="name">
                           </nz-input-group>

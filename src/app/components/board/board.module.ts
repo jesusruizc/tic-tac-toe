@@ -7,6 +7,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzCardModule } from 'ng-zorro-antd/card';
+
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
     NzModalModule,
     NzButtonModule,
     NzLayoutModule,
-    NzGridModule
+    NzGridModule,
+    NzCardModule
+    
   ]
 })
 export class BoardModule { }
