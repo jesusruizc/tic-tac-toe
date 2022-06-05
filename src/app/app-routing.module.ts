@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    component: WelcomeComponent
+  },
+  {
+    path: 'play',
+    loadChildren: ()=>import('src/app/components/board/board.module').then(m=>m.BoardModule)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

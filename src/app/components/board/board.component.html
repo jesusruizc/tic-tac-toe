@@ -1,0 +1,21 @@
+<div class="flex-vertical" style="width: 100%; height: 100%; justify-content: center;">
+    <div id="board" class="flex-vertical">
+        <div *ngFor="let row of boardState; let i=index" class="flex-horizontal" style="width: 100%; height: 33.33%;">
+            <div *ngFor="let element of row; let j=index" style="width: 33.33%; height: 100%">
+                <button style="width: 100%; height: 100%" 
+                class="box" (click)="this.updateBoard([i,j])"
+                [disabled]="boardState[i][j].checked"
+                ><strong>{{boardState[i][j].value}}</strong></button>
+            </div>
+        </div>    
+    </div>
+
+</div>
+<nz-modal nzCentered [nzClosable]="false" [(nzVisible)]="isGameOver">
+    <div *nzModalContent [innerHtml]="gameOverMessage">
+    </div>
+    <ng-container *nzModalFooter>
+        <button (click)="goHome()" nz-button nzType="default">Go Home</button>
+        <button (click)="newGame()" nz-button nzType="primary">New Game</button>
+    </ng-container>
+</nz-modal>

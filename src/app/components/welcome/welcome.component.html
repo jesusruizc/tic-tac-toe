@@ -1,0 +1,46 @@
+<div id="layout">
+    <div id="container">
+        <h3>Welcome to</h3>
+        <h1>Tic Tac Toe!</h1>
+        <button nz-button nzType="primary" (click)="isModalVisible = true">Play!</button>
+    </div>
+
+    <nz-modal [(nzVisible)]="isModalVisible" nzCentered (nzOnCancel)="isModalVisible = false"
+    nzOkText="PLAY!" nzCancelText="Cancel" (nzOnOk)="startGame()">
+        <ng-container *nzModalContent>
+            <form [formGroup]="playersForm">
+                <fieldset formGroupName="playerOne">
+                    <legend>Player One (Starts First)</legend>
+                    <label for="nameOne">Name:</label><br>
+                    <input formControlName="name" type="text"><br>
+        
+                    <input type="radio" id="X" name="symbol" value="x" 
+                    formControlName="symbol">
+                    <label for="X">X</label>
+        
+                    <input type="radio" id="O" name="symbol" value="o" 
+                    formControlName="symbol">
+                    <label for="O">O</label>
+        
+                </fieldset>
+                <hr>
+                <fieldset formGroupName="playerTwo">
+                    <legend>Player Two</legend>
+                    <label for="nameTwo">Name:</label><br>
+                    <input formControlName="name" type="text"><br>
+        
+                    <input type="radio" id="X" name="symbol" value="x" 
+                    formControlName="symbol" >
+                    <label for="X">X</label>
+        
+                    <input type="radio" id="O" name="symbol" value="o" 
+                    formControlName="symbol" >
+                    <label for="O">O</label>
+                </fieldset>
+            </form>
+        </ng-container>
+
+    </nz-modal>
+
+    
+</div>
