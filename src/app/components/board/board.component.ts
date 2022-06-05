@@ -19,7 +19,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   isPlaying!: 'x'|'o';
   isGameOver = false;
   gameOverMessage!: string;
-  turnNumber = 0;
+  turnNumber = 1;
   started!: 'x'|'o';
   
   constructor(
@@ -32,7 +32,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.boardSubs = this.board.boardState$.subscribe((next)=>this.boardState = next);
     this.playerSubs = this.playersState.players$.subscribe((next)=>this.players = next);
-    this.isPlaying= this.players[0].symbol;
+    this.isPlaying= this.players[0]?.symbol;
     this.started = this.isPlaying;
   }
 
@@ -44,13 +44,16 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   updateBoard(position: Array<number>){
     this.board.updateBoard(position, this.isPlaying)
-    this.turnNumber = this.turnNumber+1;
-
-    this.isGameOver = this.checkDiagonals(position) || this.checkRowColumn(position) || this.turnNumber ===9;
+    this.isGameOver = this.checkDiagonals(position) || this.checkRowColumn(position);
     if(this.isGameOver){
       this.handleGameOver(this.isPlaying);
       return
+    } else if(this.turnNumber===9){
+      this.isGameOver = true;
+      this.gameOverMessage = "<h1>Nobody wins!</h1>";
+      return
     }
+    this.turnNumber = this.turnNumber+1;
     this.isPlaying = this.isPlaying === 'x'? 'o':'x';
   }
 
@@ -91,13 +94,14 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   checkRowColumn(position: Array<number>):boolean{
     const row = this.boardState[position[0]];
-    const column = []
-    for(let i=0; i++; i<=2){
-      column.push(this.boardState[i][position[1]])
+    let column = [];
+    for(let i=0; i<=2; i++){
+      column.push(this.boardState[i][position[1]]);
     }
+    console.log(column)
     if(
-      (row.filter(element => element.value === this.isPlaying).length ===3) ||
-    (column.filter(element => element.value === this.isPlaying).length ===3)){
+      (row.filter(element => element.value === this.isPlaying).length === 3) ||
+    (column.filter(element => element.value === this.isPlaying).length === 3)){
       return true
     }else {
       return false
@@ -105,11 +109,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   };
 
   handleGameOver(latestSymbol: 'x'|'o'): void{
-    if(this.turnNumber === 9){
-      this.gameOverMessage = "<h1>Nobody wins!</h1>";
-      return
-    }
-    const winner = this.players[0].symbol === latestSymbol? this.players[0].name:this.players[1].name;
+    const winner = this.players[0]?.symbol === latestSymbol? this.players[0].name:this.players[1].name;
     this.playersState.updateScore(latestSymbol);
     this.gameOverMessage = 
         `<h1> ${winner} Wins!</h1>
