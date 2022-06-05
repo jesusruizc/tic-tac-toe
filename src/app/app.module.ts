@@ -16,7 +16,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+
 
 registerLocaleData(en);
 
@@ -37,7 +42,11 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzModalModule,
-    NzButtonModule
+    NzButtonModule,
+    NzFormModule,
+    NzIconModule,
+    NzInputModule,
+    NzRadioModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

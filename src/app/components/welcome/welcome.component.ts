@@ -12,11 +12,13 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   isModalVisible = false;
   playersForm!: FormGroup;
   firstPlayerSymbol!: any;
+  firstRadioValue: 'x'|'o' = 'x';
 
   constructor(
     private readonly fb: FormBuilder,
     private readonly dataHelper: PlayerDataHelperService,
     private readonly router: Router,
+    
   ) { }
 
   ngOnInit(): void {

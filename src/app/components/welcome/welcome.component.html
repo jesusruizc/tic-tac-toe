@@ -5,39 +5,51 @@
         <button nz-button nzType="primary" (click)="isModalVisible = true">Play!</button>
     </div>
 
-    <nz-modal [(nzVisible)]="isModalVisible" nzCentered (nzOnCancel)="isModalVisible = false"
-    nzOkText="PLAY!" nzCancelText="Cancel" (nzOnOk)="startGame()">
+    <nz-modal [(nzVisible)]="isModalVisible" nzCentered (nzOnCancel)="isModalVisible = false">
         <ng-container *nzModalContent>
-            <form [formGroup]="playersForm">
+            <form nz-form [formGroup]="playersForm" nzLayout="vertical">
                 <fieldset formGroupName="playerOne">
                     <legend>Player One (Starts First)</legend>
-                    <label for="nameOne">Name:</label><br>
-                    <input formControlName="name" type="text"><br>
-        
-                    <input type="radio" id="X" name="symbol" value="x" 
-                    formControlName="symbol">
-                    <label for="X">X</label>
-        
-                    <input type="radio" id="O" name="symbol" value="o" 
-                    formControlName="symbol">
-                    <label for="O">O</label>
+                    <nz-form-item>
+                        <nz-form-label nzFor="nameOne">Name</nz-form-label>
+                        <nz-form-control>
+                            <nz-input-group nzPrefixIcon="user">
+                                <input nz-input id="nameOne" formControlName="name" type="text" placeholder="Player one name">
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                          <nz-radio-group nzName="symbol" formControlName="symbol">
+                            <label nz-radio nzValue="x" >X</label>
+                            <label nz-radio nzValue="o" >O</label>
+                          </nz-radio-group>
+                    </nz-form-item>
         
                 </fieldset>
-                <hr>
                 <fieldset formGroupName="playerTwo">
                     <legend>Player Two</legend>
-                    <label for="nameTwo">Name:</label><br>
-                    <input formControlName="name" type="text"><br>
-        
-                    <input type="radio" id="X" name="symbol" value="x" 
-                    formControlName="symbol" >
-                    <label for="X">X</label>
-        
-                    <input type="radio" id="O" name="symbol" value="o" 
-                    formControlName="symbol" >
-                    <label for="O">O</label>
+                    <nz-form-item>
+                      <nz-form-label nzFor="nameTwo">Name:</nz-form-label>
+                      <nz-form-control>
+                          <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input placeholder="Player two name" formControlName="name">
+                          </nz-input-group>
+                      </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-radio-group nzName="symbol" formControlName="symbol">
+                            <label nz-radio nzValue="x" >X</label>
+                            <label nz-radio nzValue="o" >O</label>
+                        </nz-radio-group>
+                    </nz-form-item>
                 </fieldset>
             </form>
+        </ng-container>
+
+        <ng-container *nzModalFooter>
+            <button nz-button nzType="default" (click)="isModalVisible = false">Cancel</button>
+            <button nz-button nzType="primary" [disabled]="playersForm.invalid" (click)="startGame()">PLAY!</button>
         </ng-container>
 
     </nz-modal>
