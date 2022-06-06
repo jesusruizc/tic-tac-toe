@@ -1,11 +1,11 @@
 <div id="layout">
     <div id="container">
-        <h3>Welcome to</h3>
-        <h1>Tic Tac Toe!</h1>
+        <h3 style="font-size: large">Welcome to</h3>
+        <h1 style="font-size: xx-large;">Tic Tac Toe!</h1>
         <button nz-button nzType="primary" (click)="isModalVisible = true">Play!</button>
     </div>
 
-    <nz-modal [(nzVisible)]="isModalVisible" nzCentered (nzOnCancel)="isModalVisible = false">
+    <nz-modal [(nzVisible)]="isModalVisible" nzCentered (nzOnCancel)="isModalVisible = false" nzTitle="Players data">
         <ng-container *nzModalContent>
             <form nz-form [formGroup]="playersForm" nzLayout="vertical">
                 <fieldset formGroupName="playerOne">
@@ -18,7 +18,7 @@
                         nzHasFeedback
                         nzErrorTip="El nombre es obligatorio">
                             <nz-input-group nzPrefixIcon="user">
-                                <input nz-input id="nameOne" formControlName="name" type="text" placeholder="Player one name">
+                                <input nz-input id="nameOne" formControlName="name" maxlength="10" type="text" placeholder="Player one name">
                             </nz-input-group>
                         </nz-form-control>
                     </nz-form-item>
@@ -41,7 +41,7 @@
                        nzErrorTip="El nombre es obligatorio"
                        > 
                           <nz-input-group nzPrefixIcon="user">
-                            <input type="text" nz-input placeholder="Player two name" formControlName="name">
+                            <input type="text" nz-input placeholder="Player two name" maxlength="10" formControlName="name">
                           </nz-input-group>
                       </nz-form-control>
                     </nz-form-item>

@@ -41,7 +41,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         symbol: this.fb.control('x', [Validators.required])
       }),
       playerTwo: this.fb.group({
-        name: this.fb.control('',[Validators.required]),
+        name: this.fb.control('',[Validators.required, Validators.minLength(1), Validators.maxLength(10)]),
         symbol: this.fb.control({value:'o', disabled: true}, [Validators.required])
       }),
     })
